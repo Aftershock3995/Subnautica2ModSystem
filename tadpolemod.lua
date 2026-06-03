@@ -50,11 +50,34 @@ local function applyTadpoleSpeed()
     end
 end
 
-print("Tadpole Speed Loaded")
+print("Tadpole Upgrades Loaded")
 
-LoopAsync(1000, function()
-    
-    applyTadpoleSpeed()
+applyTadpoleSpeed()
 
-    return true
+NotifyOnNewObject("UWEMovementSetComponent", function(set)
+
+    if set:IsValid() and tostring(set:GetFullName()):find("BP_Tadpole_C") then
+
+        set:SetBaseSwimSpeed(TSpeed)
+        set:SetRotationSpeedMultiplier(TRot)
+    end
+end)
+
+NotifyOnNewObject("UWESubmersibleMovementComponent", function(move)
+
+    if move:IsValid() and tostring(move:GetFullName()):find("BP_Tadpole_C") then
+
+                move.MaxSwimAcceleration = TAccel
+                move.MaxAcceleration = TAccel
+                move.MaxFlyAcceleration = TAccel
+    end
+end)
+
+NotifyOnNewObject("BP_Tadpole_C", function(tidepod)
+
+    if tidepod:IsValid() then
+
+        tidepod.DefaultSwimmingFriction = TFric
+        tidepod.AngularAcceleration = TAngularAcell
+    end
 end)
