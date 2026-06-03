@@ -60,6 +60,7 @@ NotifyOnNewObject("UWEMovementSetComponent", function(set)
 
         set:SetBaseSwimSpeed(TSpeed)
         set:SetRotationSpeedMultiplier(TRot)
+
     end
 end)
 
@@ -67,9 +68,10 @@ NotifyOnNewObject("UWESubmersibleMovementComponent", function(move)
 
     if move:IsValid() and tostring(move:GetFullName()):find("BP_Tadpole_C") then
 
-                move.MaxSwimAcceleration = TAccel
-                move.MaxAcceleration = TAccel
-                move.MaxFlyAcceleration = TAccel
+        move.MaxSwimAcceleration = TAccel
+        move.MaxAcceleration = TAccel
+        move.MaxFlyAcceleration = TAccel
+        
     end
 end)
 
@@ -79,5 +81,6 @@ NotifyOnNewObject("BP_Tadpole_C", function(tidepod)
 
         tidepod.DefaultSwimmingFriction = TFric
         tidepod.AngularAcceleration = TAngularAcell
+
     end
 end)
