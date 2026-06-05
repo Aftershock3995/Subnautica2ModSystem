@@ -75,7 +75,7 @@ NotifyOnNewObject("UWESubmersibleMovementComponent", function(move)
     end
 end)
 
-NotifyOnNewObject("BP_Tadpole_C", function(tidepod)
+NotifyOnNewObject("/Game/Core/Creatures/Tadpole/BP_Tadpole.BP_Tadpole_C", function(tidepod)
 
     if tidepod:IsValid() then
 
